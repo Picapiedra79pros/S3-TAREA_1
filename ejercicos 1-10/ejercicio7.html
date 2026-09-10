@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio números primos con formulario</title>
+</head>
+
+<body>
+
+    <table>
+
+        <tr>
+            <td>
+                N primeros números primos
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="text" id="txt-numero" placeholder="Ingrese número">
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <button id="btn-verificar">Verificar número</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <div id="resultado"></div>
+            </td>
+        </tr>
+
+    </table>
+
+
+    <script>
+
+        const txtnumero = document.getElementById("txt-numero");
+        const btnverificar = document.getElementById("btn-verificar");
+        const resultado = document.getElementById("resultado");
+
+        btnverificar.addEventListener("click", function () {
+
+            let N = parseInt(txtnumero.value);
+
+            let contador = 0;
+            let primos = "";
+
+            // N primeros números primos
+            for (let numero = 2; contador < N; numero++) {
+
+                let esPrimo = true;
+
+                for (let divisor = 2; divisor < numero; divisor++) {
+
+                    if (numero % divisor == 0) {
+                        esPrimo = false;
+                        break;
+                    }
+
+                }
+
+                if (esPrimo) {
+                    primos = primos + numero + ", ";
+                    contador++;
+                }
+
+            }
+
+
+            // Contar primos entre 1 y 10
+            let cantidad1 = 0;
+            let lista1 = "";
+
+            for (let numero = 1; numero <= 10; numero++) {
+
+                let esPrimo = true;
+
+                if (numero < 2) {
+                    esPrimo = false;
+                }
+
+                for (let divisor = 2; divisor < numero; divisor++) {
+
+                    if (numero % divisor == 0) {
+                        esPrimo = false;
+                        break;
+                    }
+
+                }
+
+                if (esPrimo) {
+                    lista1 = lista1 + numero + ", ";
+                    cantidad1++;
+                }
+
+            }
+
+
+            // Contar primos entre 15 y 25
+            let cantidad2 = 0;
+            let lista2 = "";
+
+            for (let numero = 15; numero <= 25; numero++) {
+
+                let esPrimo = true;
+
+                for (let divisor = 2; divisor < numero; divisor++) {
+
+                    if (numero % divisor == 0) {
+                        esPrimo = false;
+                        break;
+                    }
+
+                }
+
+                if (esPrimo) {
+                    lista2 = lista2 + numero + ", ";
+                    cantidad2++;
+                }
+
+            }
+
+
+            // Mostrar resultado
+            resultado.innerHTML =
+                "<p>" + N + " primeros primos: " + primos + "</p>" +
+                "<p>Primos entre [1 - 10]: " + lista1 +
+                "=> cantidad " + cantidad1 + "</p>" +
+                "<p>Primos entre [15 - 25]: " + lista2 +
+                "=> cantidad " + cantidad2 + "</p>";
+
+        });
+
+    </script>
+
+</body>
+
+</html>
