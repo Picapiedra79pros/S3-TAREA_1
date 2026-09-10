@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2 - Fibonacci</title>
+</head>
+
+<body>
+
+    <h1>Serie de Fibonacci</h1>
+
+    <form id="formulario">
+
+        <label for="numero">
+            Ingrese la cantidad de números Fibonacci:
+        </label>
+
+        <input type="number" id="numero" min="1" required>
+
+        <button type="submit">
+            Generar Fibonacci
+        </button>
+
+    </form>
+
+    <br>
+
+    <div id="resultado"></div>
+
+
+    <script>
+
+        document.getElementById("formulario").addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            // Obtener el número ingresado
+            let N = Number(document.getElementById("numero").value);
+
+            // Primeros dos números de Fibonacci
+            let a = 1;
+            let b = 1;
+
+            let resultado = "";
+
+            // Ciclo para generar los N números
+            for (let i = 1; i <= N; i++) {
+
+                resultado += a + " ";
+
+                // Calcular el siguiente número
+                let siguiente = a + b;
+
+                // Actualizar los valores
+                a = b;
+                b = siguiente;
+            }
+
+            // Mostrar el resultado
+            document.getElementById("resultado").innerHTML =
+                "<h3>Serie de Fibonacci:</h3>" + resultado;
+
+        });
+
+    </script>
+
+</body>
+
+</html>

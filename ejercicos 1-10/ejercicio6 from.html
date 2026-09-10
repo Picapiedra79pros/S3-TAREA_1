@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Fibonacci con formulario</title>
+</head>
+
+<body>
+
+    <table>
+        <tr>
+            <td>
+                Número de Fibonacci
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="text" id="txt-numero" placeholder="Ingrese número">
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <button id="btn-verificar">Verificar número</button>
+            </td>
+        </tr>
+    </table>
+
+    <div id="resultado"></div>
+
+    <script>
+
+        const txtnumero = document.getElementById("txt-numero");
+        const btnverificar = document.getElementById("btn-verificar");
+        const resultado = document.getElementById("resultado");
+
+        btnverificar.addEventListener("click", function(){
+
+            let N = parseInt(txtnumero.value);
+            let anterior = 1;
+            let actual = 1;
+            let suma = 0;
+            let cantidadPrimos = 0;
+            let fibonacci = "";
+            let primos = "";
+
+            for(let i = 1; i <= N; i++){
+
+                let numero;
+
+                if(i == 1 || i == 2){
+                    numero = 1;
+                }
+                else{
+                    numero = anterior + actual;
+                    anterior = actual;
+                    actual = numero;
+                }
+
+                fibonacci = fibonacci + numero + " ";
+
+                let esPrimo = true;
+
+                if(numero < 2){
+                    esPrimo = false;
+                }
+                else{
+
+                    for(let j = 2; j < numero; j++){
+
+                        if(numero % j == 0){
+                            esPrimo = false;
+                        }
+
+                    }
+
+                }
+
+                if(esPrimo == true){
+
+                    primos = primos + numero + " ";
+                    suma = suma + numero;
+                    cantidadPrimos = cantidadPrimos + 1;
+
+                }
+
+            }
+
+            let promedio = suma / cantidadPrimos;
+
+            resultado.innerHTML =
+                "<h2>Serie Fibonacci:</h2>" +
+                "<p>" + fibonacci + "</p>" +
+
+                "<h2>Números primos:</h2>" +
+                "<p>" + primos + "</p>" +
+
+                "<h2>Suma:</h2>" +
+                "<p>" + suma + "</p>" +
+
+                "<h2>Promedio:</h2>" +
+                "<p>" + promedio + "</p>";
+
+        });
+
+    </script>
+
+</body>
+</html>

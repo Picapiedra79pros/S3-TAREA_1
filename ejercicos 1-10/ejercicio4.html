@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4 - Potencia</title>
+</head>
+
+<body>
+
+    <h1>Calcular Potencia A^B</h1>
+
+    <form id="formulario">
+
+        <label for="base">
+            Ingrese la base A:
+        </label>
+
+        <input type="number" id="base" step="any" required>
+
+        <br><br>
+
+        <label for="exponente">
+            Ingrese el exponente B:
+        </label>
+
+        <input type="number" id="exponente" step="1" required>
+
+        <br><br>
+
+        <button type="submit">
+            Calcular Potencia
+        </button>
+
+    </form>
+
+    <br>
+
+    <div id="resultado"></div>
+
+    <script>
+
+        document.getElementById("formulario").addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            let A = Number(document.getElementById("base").value);
+            let B = Number(document.getElementById("exponente").value);
+
+            let resultado = 1;
+
+            if (B > 0) {
+
+                for (let i = 1; i <= B; i++) {
+                    resultado = resultado * A;
+                }
+
+            }
+            else if (B < 0) {
+
+                for (let i = 1; i <= -B; i++) {
+                    resultado = resultado * A;
+                }
+
+                resultado = 1 / resultado;
+
+            }
+            else {
+
+                resultado = 1;
+
+            }
+
+            document.getElementById("resultado").innerHTML =
+                "<h3>Resultado:</h3>" +
+                A + "^" + B + " = " + resultado;
+
+        });
+
+    </script>
+
+</body>
+
+</html>

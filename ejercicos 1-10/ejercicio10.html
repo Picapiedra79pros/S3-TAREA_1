@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Números Perfectos</title>
+</head>
+<body>
+
+    <h2>10. NÚMEROS PERFECTOS</h2>
+
+    <form>
+        <label>Los 4 primeros números perfectos son:</label>
+        <br><br>
+
+        <input type="text" id="resultado" readonly>
+
+        <br><br>
+
+        <button type="button" onclick="numerosPerfectos()">
+            Calcular
+        </button>
+    </form>
+
+    <script>
+        function numerosPerfectos() {
+
+            let cantidad = 0;
+            let numero = 1;
+            let resultado = "";
+
+            // Buscar hasta encontrar los 4 números perfectos
+            for (numero = 1; cantidad < 4; numero++) {
+
+                let suma = 0;
+
+                // Buscar los divisores menores que el número
+                for (let divisor = 1; divisor < numero; divisor++) {
+
+                    if (numero % divisor == 0) {
+                        suma = suma + divisor;
+                    }
+                }
+
+                // Comprobar si es número perfecto
+                if (suma == numero) {
+                    resultado = resultado + numero + "   ";
+                    cantidad++;
+                }
+            }
+
+            document.getElementById("resultado").value = resultado;
+        }
+    </script>
+
+</body>
+</html>

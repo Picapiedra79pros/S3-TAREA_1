@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto y Potencia</title>
+</head>
+
+<body>
+
+    <table>
+        <tr>
+            <td>
+                Número A
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="number" id="txt-a" placeholder="Ingrese número A">
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Número B
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="number" id="txt-b" placeholder="Ingrese número B">
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <button id="btn-verificar">Calcular</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <p id="resultado"></p>
+            </td>
+        </tr>
+    </table>
+
+
+    <script>
+
+        const txta = document.getElementById("txt-a");
+        const txtb = document.getElementById("txt-b");
+        const btnverificar = document.getElementById("btn-verificar");
+        const resultado = document.getElementById("resultado");
+
+
+        btnverificar.addEventListener("click", function() {
+
+            let A = parseInt(txta.value);
+            let B = parseInt(txtb.value);
+
+            // PRODUCTO A * B utilizando suma sucesiva
+            let producto = 0;
+
+            for (let i = 0; i < B; i++) {
+                producto = producto + A;
+            }
+
+
+            // POTENCIA A^B utilizando multiplicación sucesiva
+            let potencia = 1;
+
+            for (let i = 0; i < B; i++) {
+                potencia = potencia * A;
+            }
+
+
+            resultado.innerHTML =
+                "Producto (A * B): " + producto + "<br>" +
+                "Potencia (A^B): " + potencia;
+
+        });
+
+    </script>
+
+</body>
+</html>
